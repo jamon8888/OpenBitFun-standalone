@@ -46,6 +46,12 @@ const PdfViewer = lazyWithRecovery(() =>
   }))
 );
 
+const OfficeViewer = lazyWithRecovery(() =>
+  import('@/tools/editor/components/OfficeViewer').then(module => ({
+    default: module.default,
+  }))
+);
+
 const DiffEditor = lazyWithRecovery(() =>
   import('@/tools/editor/components/DiffEditor').then(module => ({
     default: module.default,
@@ -418,6 +424,24 @@ const FlexiblePanel: React.FC<ExtendedFlexiblePanelProps> = memo(({
                 filePath={pdfViewerData.filePath || ''}
                 fileName={content.title}
                 className="openbitfun-flexible-panel__pdf-viewer"
+              />
+            )}
+          </div>
+        );
+      }
+
+      case 'office-viewer': {
+        const officeViewerData = content.data || {};
+
+        return (
+          <div className="openbitfun-flexible-panel__office-viewer-container" data-openbitfun-component="flexible-panel" data-openbitfun-part="office">
+            {renderLazyEditor(
+              <OfficeViewer
+                isActiveTab={isActive}
+                filePath={officeViewerData.filePath || ''}
+                fileName={content.title}
+                workspaceId={officeViewerData.workspaceId ?? content.metadata?.resourceScope?.workspaceId}
+                className="openbitfun-flexible-panel__office-viewer"
               />
             )}
           </div>

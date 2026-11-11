@@ -102,11 +102,11 @@ export function getPrismLanguageFromAlias(alias: string): string {
 }
 
  
-export function getEditorType(filePathOrName: string): 'code-editor' | 'markdown-editor' | 'image-viewer' | 'pdf-viewer' | 'plan-viewer' | 'html-preview' {
+export function getEditorType(filePathOrName: string): 'code-editor' | 'markdown-editor' | 'image-viewer' | 'pdf-viewer' | 'plan-viewer' | 'html-preview' | 'office-viewer' {
   const result = detectLanguage(filePathOrName);
   const iconType = result.language.iconType;
-  
-  
+
+
   const fileName = filePathOrName.split(/[/\\]/).pop()?.toLowerCase() || '';
   if (fileName.endsWith('.plan.md')) {
     return 'plan-viewer';
@@ -114,6 +114,10 @@ export function getEditorType(filePathOrName: string): 'code-editor' | 'markdown
 
   if (fileName.endsWith('.pdf')) {
     return 'pdf-viewer';
+  }
+
+  if (fileName.endsWith('.docx') || fileName.endsWith('.xlsx') || fileName.endsWith('.xls') || fileName.endsWith('.pptx')) {
+    return 'office-viewer';
   }
 
   if (fileName.endsWith('.html') || fileName.endsWith('.htm')) {

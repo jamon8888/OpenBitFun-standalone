@@ -19,6 +19,9 @@ export type { ImageViewerProps } from './ImageViewer';
 export { PdfViewer } from './PdfViewer';
 export type { PdfViewerProps } from './PdfViewer';
 
+export { default as OfficeViewer } from './OfficeViewer';
+export type { OfficeViewerProps } from './OfficeViewer';
+
 export { default as PlanViewer } from './PlanViewer';
 export type { PlanViewerProps } from './PlanViewer';
 

@@ -147,6 +147,18 @@
       "zoomIn": "Zoom in",
       "rotate90": "Rotate 90°"
     },
+    "officeViewer": {
+      "loading": "Loading document...",
+      "filePathEmpty": "File path is empty",
+      "loadFailedWithMessage": "Failed to load document: {{message}}",
+      "unsupportedFormat": "Preview for .{{extension}} files is not available yet. Download the file to open it in an external application.",
+      "download": "Download",
+      "sheet": "Sheet",
+      "zoomOut": "Zoom out",
+      "zoomLevel": "Zoom level",
+      "zoomIn": "Zoom in",
+      "rowsTruncated": "Showing the first {{rows}} rows of this sheet"
+    },
     "meditor": {
       "placeholder": "Enter Markdown...",
       "toolbarPlaceholder": "Toolbar",

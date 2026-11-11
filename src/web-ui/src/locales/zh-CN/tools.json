@@ -147,6 +147,18 @@
       "zoomIn": "放大",
       "rotate90": "旋转 90°"
     },
+    "officeViewer": {
+      "loading": "正在加载文档...",
+      "filePathEmpty": "文件路径为空",
+      "loadFailedWithMessage": "加载文档失败：{{message}}",
+      "unsupportedFormat": "暂不支持预览 .{{extension}} 文件。请下载后使用外部应用打开。",
+      "download": "下载",
+      "sheet": "工作表",
+      "zoomOut": "缩小",
+      "zoomLevel": "缩放比例",
+      "zoomIn": "放大",
+      "rowsTruncated": "仅显示此工作表的前 {{rows}} 行"
+    },
     "meditor": {
       "placeholder": "请输入 Markdown 内容...",
       "toolbarPlaceholder": "工具栏",
