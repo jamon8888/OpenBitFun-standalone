@@ -99,6 +99,14 @@ export const PANEL_CONTENT_CONFIGS: Record<PanelContentType, PanelContentConfig>
     supportsDownload: false,
     showHeader: false
   },
+  'office-viewer': {
+    type: 'office-viewer',
+    displayName: 'Office Viewer',
+    icon: { glyph: FileText },
+    supportsCopy: false,
+    supportsDownload: true,
+    showHeader: false
+  },
   'html-preview': {
     type: 'html-preview',
     displayName: 'HTML Preview',

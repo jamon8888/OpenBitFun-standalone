@@ -231,6 +231,7 @@ const EDITOR_OPENABLE_EXTENSIONS = new Set([
   'html', 'htm', 'css', 'scss', 'less', 'sass',
   'json', 'jsonc', 'yaml', 'yml', 'toml', 'xml',
   'md', 'mdx', 'rst', 'txt', 'csv', 'tsv', 'pdf',
+  'docx', 'xlsx', 'xls', 'pptx',
   'sh', 'bash', 'zsh', 'fish', 'ps1', 'bat', 'cmd',
   'sql', 'graphql', 'gql', 'proto',
   'ini', 'cfg', 'conf', 'env', 'lock',

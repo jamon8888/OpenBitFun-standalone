@@ -1036,7 +1036,7 @@ Second paragraph.
       `2. [README.md](${EXAMPLE_ABSOLUTE_README})`,
       '3. [README.md](computer://README.md)',
       `4. [README.md](computer://${EXAMPLE_ABSOLUTE_README})`,
-      '5. [deck.pptx](computer://deck.pptx)',
+      '5. [archive.zip](computer://archive.zip)',
     ].join('\n');
 
     await act(async () => {
@@ -1091,7 +1091,7 @@ Second paragraph.
       await Promise.resolve();
     });
 
-    expect(mocks.revealInExplorer).toHaveBeenNthCalledWith(1, `${EXAMPLE_WORKSPACE}\\deck.pptx`);
+    expect(mocks.revealInExplorer).toHaveBeenNthCalledWith(1, `${EXAMPLE_WORKSPACE}\\archive.zip`);
     expect(onFileViewRequest).toHaveBeenCalledTimes(4);
   });
 
@@ -1114,6 +1114,29 @@ Second paragraph.
     act(() => link?.click());
 
     expect(onFileViewRequest).toHaveBeenCalledWith(pdfPath, 'Report.PDF', undefined);
+    expect(mocks.revealInExplorer).not.toHaveBeenCalled();
+  });
+
+  it('routes Office document links through the integrated file viewer instead of the file manager', async () => {
+    await act(async () => {
+      root.render(
+        <MarkdownRenderer
+          content={'[notes.docx](notes.docx) and [budget.XLSX](D:\\Docs\\budget.XLSX)'}
+          onFileViewRequest={onFileViewRequest}
+        />,
+      );
+      await Promise.resolve();
+      await Promise.resolve();
+    });
+
+    const links = Array.from(container.querySelectorAll<HTMLButtonElement>('button.file-link'));
+    expect(links).toHaveLength(2);
+
+    act(() => links[0]?.click());
+    act(() => links[1]?.click());
+
+    expect(onFileViewRequest).toHaveBeenNthCalledWith(1, 'notes.docx', 'notes.docx', undefined);
+    expect(onFileViewRequest).toHaveBeenNthCalledWith(2, 'D:\\Docs\\budget.XLSX', 'budget.XLSX', undefined);
     expect(mocks.revealInExplorer).not.toHaveBeenCalled();
   });
 
